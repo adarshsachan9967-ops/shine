@@ -25,7 +25,7 @@ export default function EnvelopeLetter() {
           From The Heart
         </span>
         <h2 className="font-playfair-luxury text-3xl sm:text-5xl md:text-6xl font-bold text-[#3D0C1A]">
-          A letter for Rose <span className="inline-block animate-pulse">💌🌹</span>
+          A letter for Kajal <span className="inline-block animate-pulse">💌🎂</span>
         </h2>
         <p className="mt-2 text-sm md:text-base text-[#8A4F60] font-light">
           {isOpen ? "Written with love, kept forever." : "There is an envelope waiting for you. Click to open it."}
@@ -98,7 +98,7 @@ export default function EnvelopeLetter() {
                   {letter.salutation}
                 </span>
                 <span className="text-xs font-serif-luxury italic text-[#8A4F60]">
-                  For Rose, always 🌹
+                  For Birthday Girl Kajal, always 🎂💖
                 </span>
               </div>
 

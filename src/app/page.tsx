@@ -28,8 +28,22 @@ import FinalSurprise from "@/components/FinalSurprise";
 import Footer from "@/components/Footer";
 import { sounds } from "@/utils/sound";
 
+import confetti from "canvas-confetti";
+
 export default function Home() {
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      confetti({
+        particleCount: 60,
+        spread: 80,
+        origin: { y: 0.6 },
+        colors: ["#FF758F", "#FFB3C1", "#E25875", "#FFD166", "#C77DFF"],
+      });
+    }, 2800);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleToggleGlobalAudio = () => {
     const isMuted = sounds.toggleMute();

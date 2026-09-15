@@ -4,38 +4,38 @@ import { getDatabase } from "@/lib/mongodb";
 export const dynamic = "force-dynamic";
 
 const CUTE_NOTE_PHOTOS = [
-  "/images/rose/Image-34333.jpg",
-  "/images/rose/Image-19816.jpg",
-  "/images/rose/Image-40001.jpg",
-  "/images/rose/Image-2189.jpg",
-  "/images/rose/Image-71773.jpg",
-  "/images/rose/Image-30998.jpg",
+  "/images/kajal/photos/kajal-01.jpg",
+  "/images/kajal/photos/kajal-02.jpg",
+  "/images/kajal/photos/kajal-03.jpg",
+  "/images/kajal/photos/kajal-04.jpg",
+  "/images/kajal/photos/kajal-05.jpg",
+  "/images/kajal/photos/kajal-06.jpg",
 ];
 
 const DEFAULT_NOTES = [
   {
     sender: "Adarsh",
-    message: "Rose, you make every ordinary day feel like a magical blooming garden. Thank you for being you! 🌹❤️",
+    message: "Happy Birthday, Kajal! You make every ordinary day feel like a magical celebration. Thank you for being the sweetest part of my life! 🎂💖",
     tag: "Heartfelt",
-    imageUrl: "/images/rose/Image-34333.jpg",
+    imageUrl: "/images/kajal/photos/kajal-01.jpg",
     createdAt: new Date().toISOString(),
-    likes: 14,
+    likes: 24,
   },
   {
     sender: "Forever Yours",
-    message: "823 days of laughter, inside jokes, and realizing my favorite place is wherever you are, Rose. ✨",
+    message: "Celebrating your special day, Kajal! Wishing you laughter, boundless happiness, and dreams fulfilled. ✨🎂",
     tag: "Romantic",
-    imageUrl: "/images/rose/Image-40001.jpg",
+    imageUrl: "/images/kajal/photos/kajal-02.jpg",
     createdAt: new Date(Date.now() - 86400000).toISOString(),
-    likes: 21,
+    likes: 31,
   },
   {
     sender: "Adarsh",
-    message: "Tere chehre ki muskaan hi meri duniya hai, Rose. Always keep blooming! 🌸",
+    message: "Tere chehre ki muskaan hi meri duniya hai, Kajal. Always keep blooming and smiling! 🌸🎂",
     tag: "Shayari",
-    imageUrl: "/images/rose/Image-19816.jpg",
+    imageUrl: "/images/kajal/photos/kajal-03.jpg",
     createdAt: new Date(Date.now() - 172800000).toISOString(),
-    likes: 28,
+    likes: 42,
   },
 ];
 
@@ -53,20 +53,21 @@ export async function GET() {
           { imageUrl: null },
           { imageUrl: { $regex: "polaroid1\\.jpg" } },
           { imageUrl: { $regex: "meghna" } },
+          { imageUrl: { $regex: "rose" } },
         ],
       },
-      { $set: { imageUrl: "/images/rose/Image-34333.jpg" } }
+      { $set: { imageUrl: "/images/kajal/photos/kajal-01.jpg" } }
     ).catch(() => {});
 
-    // Ensure notes point to Rose images
+    // Ensure notes point to Kajal images
     await collection.updateOne(
       { sender: "Adarsh", tag: "Heartfelt" },
-      { $set: { imageUrl: "/images/rose/Image-34333.jpg" } }
+      { $set: { imageUrl: "/images/kajal/photos/kajal-01.jpg" } }
     ).catch(() => {});
 
     await collection.updateOne(
       { sender: "Forever Yours" },
-      { $set: { imageUrl: "/images/rose/Image-40001.jpg" } }
+      { $set: { imageUrl: "/images/kajal/photos/kajal-02.jpg" } }
     ).catch(() => {});
 
     let notes = await collection.find({}).sort({ createdAt: -1 }).limit(50).toArray();

@@ -54,10 +54,10 @@ export default function VideoSection() {
 
       <div className="text-center mb-8">
         <span className="font-handwriting text-2xl md:text-3xl text-[#E25875] font-semibold block mb-1">
-          Sweet Moments in Motion 🌹
+          Sweet Moments in Motion 🎂💖
         </span>
         <h2 className="font-playfair-luxury text-3xl sm:text-4xl md:text-5xl font-bold text-[#3D0C1A]">
-          Rose's Video Vault
+          Kajal's Video Vault
         </h2>
         <p className="mt-2 text-sm md:text-base text-[#8A4F60] font-light max-w-md mx-auto">
           Every movement, laugh, and glance captured in time. Tap unmute to hear the music and watch each clip!
@@ -168,7 +168,7 @@ export default function VideoSection() {
                 “{quote}”
               </p>
               <span className="font-handwriting text-xl text-[#FFCAD4] mt-1 block">
-                Rose 🌹
+                Kajal 💖
               </span>
             </motion.div>
           </div>

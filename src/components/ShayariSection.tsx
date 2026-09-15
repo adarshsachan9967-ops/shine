@@ -144,7 +144,7 @@ export default function ShayariSection() {
                   </button>
 
                   <span className="font-handwriting text-xl text-[#E25875]">
-                    For Rose, always 🌹❤️
+                    For Birthday Girl Kajal 🎂💖
                   </span>
                 </div>
               </div>

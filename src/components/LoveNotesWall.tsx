@@ -195,7 +195,7 @@ export default function LoveNotesWall() {
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#FF4D6D] to-[#E63946] text-white font-medium shadow-lg shadow-[#FF4D6D]/25 hover:shadow-xl hover:shadow-[#FF4D6D]/40 transition-all duration-300 hover:scale-105 active:scale-95"
             >
               <Plus className="w-5 h-5" />
-              <span>Leave a Note for Rose 🌹</span>
+              <span>Leave a Birthday Note for Kajal 🎂💖</span>
               <Sparkles className="w-4 h-4 text-amber-200 animate-pulse" />
             </button>
           </motion.div>
@@ -318,7 +318,7 @@ export default function LoveNotesWall() {
               <div className="flex items-center gap-2 mb-2">
                 <Heart className="w-5 h-5 text-[#FF4D6D] fill-[#FF4D6D]" />
                 <h3 className="font-playfair-luxury text-2xl font-bold text-[#3D0C1A]">
-                  A Note for Rose 🌹
+                  A Birthday Note for Kajal 🎂💖
                 </h3>
               </div>
               <p className="font-serif-luxury text-sm text-[#7C3F58] mb-6">
@@ -366,12 +366,12 @@ export default function LoveNotesWall() {
                 {/* Message */}
                 <div>
                   <label className="block text-xs font-semibold text-[#8B1E3F] uppercase tracking-wider mb-1.5">
-                    Your Message / Shayari
+                    Your Message / Birthday Wish
                   </label>
                   <textarea
                     rows={4}
                     required
-                    placeholder="Write a heartfelt line, inside joke, or loving thought for Rose… 🌹"
+                    placeholder="Write a heartfelt line, birthday wish, or loving thought for Kajal… 🎂💖"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     className="w-full px-4 py-3 rounded-xl bg-[#FFF9FA] border border-[#FFD0DB] text-[#3D0C1A] placeholder-[#B58A99] focus:outline-none focus:border-[#FF4D6D] transition-colors resize-none font-serif-luxury text-sm"

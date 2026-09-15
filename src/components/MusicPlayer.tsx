@@ -70,7 +70,7 @@ export default function MusicPlayer({
           <span className="inline-block animate-bounce text-2xl md:text-4xl">🎵</span>
         </h2>
         <p className="mt-2 text-sm md:text-base text-[#8A4F60] font-light max-w-lg mx-auto">
-          Handpicked romantic Bollywood cinema melodies dedicated to Rose 🌹. Tap any song to play the real music!
+          Handpicked romantic Bollywood cinema melodies dedicated to Kajal 🌸. Tap any song to play the real music!
         </p>
       </div>
 

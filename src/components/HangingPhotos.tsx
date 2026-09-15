@@ -91,7 +91,7 @@ export default function HangingPhotos() {
                 id: selectedPhoto.id,
                 src: selectedPhoto.image,
                 caption: selectedPhoto.word,
-                date: "A Little Moment of Rose 🌹",
+                date: "A Little Moment of Kajal 🎂💖",
                 alt: selectedPhoto.word,
                 category: "favorites",
               }

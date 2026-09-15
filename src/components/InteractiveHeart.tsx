@@ -59,7 +59,7 @@ export default function InteractiveHeart() {
         Tap the heart ❤️
       </motion.h2>
       <p className="text-sm md:text-base text-[#8A4F60] font-light max-w-md mx-auto mb-8">
-        Every tap reveals a special photo & secret message made just for Rose! 🌹
+        Every tap unwraps a special photo & birthday blessing made just for Kajal! 🎂💖
       </p>
 
       {/* Large Glowing Interactive Heart */}
@@ -94,7 +94,7 @@ export default function InteractiveHeart() {
               exit={{ opacity: 0 }}
               className="text-sm text-[#8A4F60] italic"
             >
-              (Tap the glowing heart to reveal Rose's photos & sweet notes… 🌹)
+              (Tap the glowing heart to reveal Kajal's photos & sweet birthday notes… 🎂✨)
             </motion.p>
           ) : (
             <motion.div

@@ -30,7 +30,7 @@ export default function SplitStory() {
             <div className="relative w-full h-full rounded-2xl overflow-hidden bg-[#FFF5F7]">
               {/* Ambient blur fill */}
               <Image
-                src={image || "/images/rose/Image-34333.jpg"}
+                src={image || "/images/kajal/photos/kajal-01.jpg"}
                 alt=""
                 fill
                 className="object-cover blur-xs opacity-25 scale-110 pointer-events-none"
@@ -38,8 +38,8 @@ export default function SplitStory() {
               />
               {/* Unclipped full image */}
               <Image
-                src={image || "/images/rose/Image-34333.jpg"}
-                alt="Rose quiet moments"
+                src={image || "/images/kajal/photos/kajal-01.jpg"}
+                alt="Kajal quiet moments"
                 fill
                 className="object-contain p-1 relative z-10"
                 sizes="(max-width: 1024px) 100vw, 600px"

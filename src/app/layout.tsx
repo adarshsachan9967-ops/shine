@@ -2,26 +2,26 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://rose.love"),
-  title: "Rose 🌹 | A Little World Made For You",
+  metadataBase: new URL("https://kajal.love"),
+  title: "Happy Birthday Kajal 🎂✨ | A Little Universe Made For You",
   description:
-    "A little digital love story made especially for Rose — filled with memories, little moments, blooming roses, beautiful shayaris and sweet surprises.",
+    "A magical birthday present and digital keepsake crafted especially for Kajal — filled with memories, 64 cherished photographs, videos, sweet Hindi & English shayaris, and endless love.",
   openGraph: {
-    title: "Rose 🌹 | A Little World Made For You",
+    title: "Happy Birthday Kajal 🎂✨ | A Little Universe Made For You",
     description:
-      "A little digital love story made especially for Rose — filled with memories, little moments, blooming roses, beautiful shayaris and sweet surprises.",
+      "A magical birthday present and digital keepsake crafted especially for Kajal — filled with memories, 64 cherished photographs, videos, sweet Hindi & English shayaris, and endless love.",
     images: [
       {
-        url: "/images/rose/Image-34333.jpg",
+        url: "/images/kajal/photos/kajal-01.jpg",
         width: 1200,
         height: 630,
-        alt: "Rose - A Little World Made For You",
+        alt: "Happy Birthday Kajal",
       },
     ],
     type: "website",
   },
   icons: {
-    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌹</text></svg>",
+    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>",
   },
 };
 

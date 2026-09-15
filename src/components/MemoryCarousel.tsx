@@ -8,7 +8,7 @@ import { SITE_CONFIG, MemoryItem } from "@/data/config";
 import MemoryLightbox from "./MemoryLightbox";
 
 const CATEGORIES: { label: string; value: string }[] = [
-  { label: "All Memories (35)", value: "all" },
+  { label: "All Memories (64) 🎂", value: "all" },
   { label: "Smiles 🌸", value: "smiles" },
   { label: "Favorites ✨", value: "favorites" },
   { label: "Special Moments 💖", value: "moments" },
@@ -72,7 +72,7 @@ export default function MemoryCarousel() {
           </span>
         </motion.h2>
         <p className="mt-3 text-sm md:text-base text-[#8A4F60] font-light max-w-lg mx-auto">
-          Swipe or drag across to flip through all 37 snapshots of Rose 🌹. Tap any polaroid to view full size.
+          Swipe or drag across to flip through all 64 memories of Birthday Girl Kajal 🎂💖. Tap any polaroid to view full size.
         </p>
 
         {/* Category Filters */}

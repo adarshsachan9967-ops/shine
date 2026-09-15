@@ -15,14 +15,14 @@ interface StarWishBubble {
 }
 
 const HEART_TAP_WORDS = [
-  "You tapped Rose's Heart! 🌹💖",
+  "You tapped Kajal's Heart! 🎂💖",
   "Dil Ki Dhadkan ✨",
   "My Favorite Smile 🥰",
   "Pure Magic 🌸",
   "Beating Just For You 💕",
-  "Sweetest Angel 👑",
+  "Birthday Queen 👑",
   "Infinite Love ❤️",
-  "You Make Life Beautiful 🌹",
+  "Happy Birthday Kajal! 🎂🎉",
 ];
 
 const SKY_WISH_WORDS = [
@@ -31,7 +31,7 @@ const SKY_WISH_WORDS = [
   "Sweet Dreams 🌙",
   "Sweetheart 🍬",
   "Always Cherished 💖",
-  "Rose 🌹",
+  "Kajal 🎂💖",
 ];
 
 export default function LoveScene3D() {

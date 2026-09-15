@@ -14,8 +14,8 @@ interface FloatingLove {
 }
 
 const SWEET_MESSAGES = [
-  "Tap the heart for love ❤️",
-  "You made my heart flutter, Rose! 🌹💖",
+  "Tap the heart for birthday magic ❤️",
+  "Happy Birthday, Dearest Kajal! 🎂💖",
   "That smile of yours is pure magic ✨",
   "Thinking of you makes every day sweeter 🌸",
   "You have my whole heart! 🥰",
@@ -281,7 +281,7 @@ export default function HeroHeart3D() {
         ref={mountRef}
         onClick={handleHeartTap}
         className="w-full h-[320px] sm:h-[380px] md:h-[440px] flex items-center justify-center cursor-pointer relative active:scale-95 transition-transform duration-200"
-        aria-label="3D Interactive Floating Glass Heart for Rose - Tap for love"
+        aria-label="3D Interactive Floating Glass Heart for Kajal - Tap for love"
       >
         {/* Beating ripple ring aura when tapped */}
         {isBeating && (

@@ -61,7 +61,7 @@ export default function DreamSection() {
         </motion.h2>
 
         <p className="mt-4 text-sm md:text-base text-[#FFCAD4]/80 font-light max-w-md mx-auto">
-          The sky is filled with whispers. Click the glowing stars to reveal secret romantic wishes made for Rose. 🌹
+          The sky is filled with whispers. Click the glowing stars to reveal secret birthday wishes made for Kajal. 🎂✨
         </p>
       </div>
 
@@ -153,7 +153,7 @@ export default function DreamSection() {
               </span>
 
               <h4 className="font-playfair-luxury text-2xl sm:text-3xl font-bold mt-2 mb-4">
-                A Wish For Rose 🌹
+                A Birthday Wish For Kajal 🎂💖
               </h4>
 
               <p className="font-serif-luxury text-xl sm:text-2xl text-[#FFE5EC] leading-relaxed italic mb-6">

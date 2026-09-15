@@ -46,9 +46,9 @@ export default function LoveCards() {
           viewport={{ once: true }}
           className="font-playfair-luxury text-3xl sm:text-5xl md:text-6xl font-bold text-[#3D0C1A] leading-tight"
         >
-          Little things about Rose
+          Little things about Birthday Girl Kajal
           <span className="block italic text-[#FF758F] font-serif-luxury">
-            that make everything better. 🌹
+            that make everything magical. 🎂💖
           </span>
         </motion.h2>
         <p className="mt-3 text-sm md:text-base text-[#8A4F60] font-light">
