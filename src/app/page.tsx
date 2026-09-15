@@ -22,6 +22,7 @@ import LoveNotesWall from "@/components/LoveNotesWall";
 import MusicPlayer from "@/components/MusicPlayer";
 import EnvelopeLetter from "@/components/EnvelopeLetter";
 import ScrapbookWall from "@/components/ScrapbookWall";
+import HangingPhotos from "@/components/HangingPhotos";
 import DreamSection from "@/components/DreamSection";
 import MemoryTimer from "@/components/MemoryTimer";
 import FinalSurprise from "@/components/FinalSurprise";
@@ -75,6 +76,9 @@ export default function Home() {
 
       {/* 7. "A Little Message" Poetic Opening */}
       <LittleMessage />
+
+      {/* Swaying Hanging Clothesline Polaroids */}
+      <HangingPhotos />
 
       {/* 8. Large Immersive 3D Dream Love Scene (Clouds, Moon, Stars, Floating Hearts) */}
       <div className="w-full max-w-7xl 2xl:max-w-[1600px] mx-auto px-2 sm:px-6">

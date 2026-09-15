@@ -61,6 +61,7 @@ export default function HangingPhotos() {
                   src={item.image}
                   alt=""
                   fill
+                  unoptimized
                   className="object-cover blur-xs opacity-25 scale-110 pointer-events-none"
                   sizes="120px"
                 />
@@ -69,6 +70,7 @@ export default function HangingPhotos() {
                   src={item.image}
                   alt={item.word}
                   fill
+                  unoptimized
                   className="object-contain group-hover:scale-105 transition-transform duration-300 relative z-10"
                   sizes="(max-width: 640px) 74px, (max-width: 1024px) 165px, 220px"
                 />

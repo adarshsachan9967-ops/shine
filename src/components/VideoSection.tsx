@@ -233,6 +233,94 @@ export default function VideoSection() {
           <ChevronRight className="w-5 h-5" />
         </button>
       </div>
+
+      {/* All 5 Video Reels Showcase Grid */}
+      <div className="mt-14 max-w-6xl mx-auto">
+        <div className="text-center mb-6">
+          <span className="text-xs uppercase tracking-widest text-[#E25875] font-semibold flex items-center justify-center gap-1.5">
+            <Sparkles className="w-3.5 h-3.5" /> All 5 Video Memories
+          </span>
+          <h3 className="font-playfair-luxury text-xl sm:text-2xl font-bold text-[#3D0C1A] mt-1">
+            Tap Any Video to Watch Full Screen
+          </h3>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
+          {reels.map((reel, idx) => {
+            const isActive = idx === activeIdx;
+            return (
+              <motion.div
+                key={reel.id}
+                whileHover={{ y: -4, scale: 1.02 }}
+                onClick={() => {
+                  setActiveIdx(idx);
+                  setIsPlaying(true);
+                  // Scroll slightly towards the main player if needed
+                  const playerEl = document.getElementById("cinema");
+                  if (playerEl) {
+                    playerEl.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }
+                }}
+                className={`group relative rounded-2xl overflow-hidden cursor-pointer select-none transition-all duration-300 border-2 bg-black ${
+                  isActive
+                    ? "border-[#E63956] shadow-xl shadow-[#E63956]/20 ring-2 ring-[#E63956]/30"
+                    : "border-[#FFCAD4]/80 hover:border-[#E63956]/60 shadow-md hover:shadow-lg"
+                }`}
+              >
+                {/* 9:16 Video Thumbnail Container */}
+                <div className="relative aspect-[9/16] w-full overflow-hidden">
+                  {/* Poster / Video Element */}
+                  <video
+                    src={reel.url}
+                    poster={reel.poster}
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/40" />
+
+                  {/* Top Badge */}
+                  <div className="absolute top-2 left-2 right-2 flex items-center justify-between z-10">
+                    <span className="px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-[10px] text-white/90 font-medium border border-white/20">
+                      Reel {idx + 1}
+                    </span>
+                    {isActive && (
+                      <span className="px-2 py-0.5 rounded-full bg-[#E63956] text-white text-[10px] font-bold shadow-xs animate-pulse">
+                        Playing
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Play Icon in center */}
+                  <div className="absolute inset-0 flex items-center justify-center z-10">
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-transform duration-300 ${
+                      isActive
+                        ? "bg-[#E63956] text-white scale-110"
+                        : "bg-white/70 text-[#3D0C1A] group-hover:scale-110 group-hover:bg-white"
+                    }`}>
+                      <Play className="w-5 h-5 fill-current ml-0.5" />
+                    </div>
+                  </div>
+
+                  {/* Bottom Info */}
+                  <div className="absolute bottom-2 left-2 right-2 z-10 text-white">
+                    <p className="font-playfair-luxury text-xs sm:text-sm font-bold truncate drop-shadow-sm">
+                      {reel.title}
+                    </p>
+                    <p className="text-[10px] text-[#FFCAD4] truncate font-light mt-0.5">
+                      {reel.subtitle}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
     </section>
   );
 }
