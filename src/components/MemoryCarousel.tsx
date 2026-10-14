@@ -137,6 +137,22 @@ export default function MemoryCarousel() {
     }
   };
 
+  // Continuous auto-slide when carousel mode is active
+  React.useEffect(() => {
+    if (viewMode !== "carousel") return;
+    const interval = setInterval(() => {
+      if (scrollRef.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+        if (scrollLeft + clientWidth >= scrollWidth - 10) {
+          scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
+        } else {
+          scrollRef.current.scrollBy({ left: 280, behavior: "smooth" });
+        }
+      }
+    }, 3200);
+    return () => clearInterval(interval);
+  }, [viewMode]);
+
   return (
     <section id="memories" className="relative py-24 md:py-36 px-3 sm:px-6 lg:px-8 overflow-hidden bg-[#FFFDFB]">
       {/* Background Soft Glow */}

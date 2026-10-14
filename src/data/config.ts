@@ -169,7 +169,7 @@ export const SITE_CONFIG = {
     badge: "A SPECIAL BIRTHDAY MESSAGE FOR KAJAL 🎂💖",
     heading: "Kajal, this universe was created for your birthday.",
     body: "There are people who make ordinary days feel like timeless poetry. People whose name alone brings a smile to your face without warning. Kajal, just like the meaning of your name, you bring depth, allure, and gentle magic to everything around you. Your laughter has a melody of its own, your eyes hold an entire universe of kindness, and your sweet warmth makes life feel so safe and beautiful. On your birthday, this little corner of the internet is a gift crafted just for you—a celebration of your smile, your grace, and every sweet memory we share.",
-    signature: "— made with all my love on your birthday, Adarsh 🎂❤️",
+    signature: "— made with all my love on your birthday, Yash 🎂❤️",
   },
 
   // Our Little Story timeline
@@ -1102,7 +1102,7 @@ export const SITE_CONFIG = {
       "Happy Birthday once again, Kajal! 🎂🎉❤️",
     ],
     closing: "With all my love, always & forever,",
-    signature: "Adarsh ❤️",
+    signature: "Yash ❤️",
   },
 
   // Starry Night Wishes (Clickable stars in Dream section)

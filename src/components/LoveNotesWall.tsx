@@ -114,7 +114,7 @@ export default function LoveNotesWall() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          sender: sender.trim() || "Adarsh",
+          sender: sender.trim() || "Yash",
           message: message.trim(),
           tag,
           imageUrl: uploadedUrl,
@@ -339,7 +339,7 @@ export default function LoveNotesWall() {
                   </label>
                   <input
                     type="text"
-                    placeholder="e.g. Adarsh"
+                    placeholder="e.g. Yash"
                     value={sender}
                     onChange={(e) => setSender(e.target.value)}
                     className="w-full px-4 py-2.5 rounded-xl bg-[#FFF9FA] border border-[#FFD0DB] text-[#3D0C1A] placeholder-[#B58A99] focus:outline-none focus:border-[#FF4D6D] transition-colors"

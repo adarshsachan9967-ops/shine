@@ -23,7 +23,7 @@ const CUTE_ANGEL_NOTE_PHOTOS = [
 
 const DEFAULT_NOTES = [
   {
-    sender: "Adarsh",
+    sender: "Yash",
     message: "Happy Birthday, Kajal! You make every ordinary day feel like a magical celebration. Thank you for being the sweetest part of my life! 🎂💖",
     tag: "Heartfelt",
     imageUrl: "/images/kajal/photos/kajal-01.jpg",
@@ -39,7 +39,7 @@ const DEFAULT_NOTES = [
     likes: 31,
   },
   {
-    sender: "Adarsh",
+    sender: "Yash",
     message: "Tere chehre ki muskaan hi meri duniya hai, Kajal. Always keep blooming and smiling! 🌸🎂",
     tag: "Shayari",
     imageUrl: "/images/kajal/photos/kajal-03.jpg",
@@ -50,7 +50,7 @@ const DEFAULT_NOTES = [
 
 const DEFAULT_ANGEL_NOTES = [
   {
-    sender: "Adarsh",
+    sender: "Yash",
     message: "Happy Birthday, Angel! You make every ordinary day feel like a magical celebration. Thank you for being the sweetest part of my life! 🎂💖",
     tag: "Heartfelt",
     imageUrl: "/images/angel/angel-01.jpg",
@@ -66,7 +66,7 @@ const DEFAULT_ANGEL_NOTES = [
     likes: 31,
   },
   {
-    sender: "Adarsh",
+    sender: "Yash",
     message: "Tere chehre ki muskaan hi meri duniya hai, Angel. Always keep blooming and smiling! 🌸🎂",
     tag: "Shayari",
     imageUrl: "/images/angel/angel-03.jpg",

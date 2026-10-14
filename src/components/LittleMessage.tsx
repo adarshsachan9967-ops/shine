@@ -117,7 +117,7 @@ export default function LittleMessage() {
               whileHover={{ scale: 1.15 }}
               whileTap={{ scale: 0.9 }}
               className="relative p-3 rounded-full bg-[#FFF0F3] hover:bg-[#FFE5EC] border border-[#FFCAD4] shadow-md transition-all cursor-pointer group/btn"
-              aria-label="Tap to reveal secret love note for Kajal"
+              aria-label={`Tap to reveal secret love note for ${config.NAME}`}
             >
               <Heart
                 className={`w-7 h-7 sm:w-8 sm:h-8 text-[#FF4D6D] fill-[#FF758F] transition-all ${
