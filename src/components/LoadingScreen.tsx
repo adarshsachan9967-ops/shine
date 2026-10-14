@@ -2,8 +2,10 @@
 
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useSiteConfig } from "@/context/ConfigContext";
 
 export default function LoadingScreen({ onFinish }: { onFinish?: () => void }) {
+  const config = useSiteConfig();
   const [stage, setStage] = useState<"pulsing" | "expanding" | "finished">("pulsing");
 
   useEffect(() => {
@@ -95,7 +97,7 @@ export default function LoadingScreen({ onFinish }: { onFinish?: () => void }) {
           className="mt-8 text-center px-4"
         >
           <p className="font-handwriting text-2xl md:text-3xl text-[#4A1525] font-semibold tracking-wide">
-            Creating something magical for Kajal's Birthday… 🎂✨
+            Creating something magical for {config.NAME}'s Birthday… 🎂✨
           </p>
           <p className="text-xs text-[#8A4F60] mt-2 font-light tracking-widest uppercase">
             A little corner of the internet

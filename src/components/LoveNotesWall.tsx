@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquareHeart, Send, Image as ImageIcon, Heart, Sparkles, X, Loader2, Plus, Camera } from "lucide-react";
 import confetti from "canvas-confetti";
 import { sounds } from "@/utils/sound";
+import { useSiteConfig } from "@/context/ConfigContext";
 
 interface Note {
   id: string;
@@ -17,6 +18,7 @@ interface Note {
 }
 
 export default function LoveNotesWall() {
+  const config = useSiteConfig();
   const [notes, setNotes] = useState<Note[]>([]);
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
@@ -37,7 +39,7 @@ export default function LoveNotesWall() {
   // Fetch notes from MongoDB Atlas
   const fetchNotes = async () => {
     try {
-      const res = await fetch("/api/notes");
+      const res = await fetch(`/api/notes?recipient=${config.NAME.toLowerCase()}`);
       const data = await res.json();
       if (data?.notes) {
         setNotes(data.notes);
@@ -94,7 +96,7 @@ export default function LoveNotesWall() {
         const formData = new FormData();
         formData.append("file", file);
         formData.append("fileName", `rose_note_${Date.now()}`);
-        const ikFolder = process.env.NEXT_PUBLIC_IMAGEKIT_FOLDER ? `/${process.env.NEXT_PUBLIC_IMAGEKIT_FOLDER}` : "/kajal";
+        const ikFolder = process.env.NEXT_PUBLIC_IMAGEKIT_FOLDER ? `/${process.env.NEXT_PUBLIC_IMAGEKIT_FOLDER}` : `/${config.NAME.toLowerCase()}`;
         formData.append("folder", ikFolder);
 
         const uploadRes = await fetch("/api/imagekit/upload", {
@@ -116,6 +118,7 @@ export default function LoveNotesWall() {
           message: message.trim(),
           tag,
           imageUrl: uploadedUrl,
+          recipient: config.NAME.toLowerCase(),
         }),
       });
 
@@ -195,7 +198,7 @@ export default function LoveNotesWall() {
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#FF4D6D] to-[#E63946] text-white font-medium shadow-lg shadow-[#FF4D6D]/25 hover:shadow-xl hover:shadow-[#FF4D6D]/40 transition-all duration-300 hover:scale-105 active:scale-95"
             >
               <Plus className="w-5 h-5" />
-              <span>Leave a Birthday Note for Kajal 🎂💖</span>
+              <span>Leave a Birthday Note for {config.NAME} 🎂💖</span>
               <Sparkles className="w-4 h-4 text-amber-200 animate-pulse" />
             </button>
           </motion.div>
@@ -209,7 +212,9 @@ export default function LoveNotesWall() {
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {notes.map((note, idx) => (
+            {notes.map((note, idx) => {
+              const fallbackSrc = config.MEMORIES[idx % config.MEMORIES.length]?.src || "/images/angel/angel-01.jpg";
+              return (
               <motion.div
                 key={note.id || idx}
                 initial={{ opacity: 0, y: 20 }}
@@ -248,12 +253,12 @@ export default function LoveNotesWall() {
                       src={
                         note.imageUrl && !note.imageUrl.includes("polaroid1.jpg") && note.imageUrl.trim() !== ""
                           ? note.imageUrl
-                          : ["/images/rose/Image-34333.jpg", "/images/rose/Image-19816.jpg", "/images/rose/Image-40001.jpg", "/images/rose/Image-2189.jpg", "/images/rose/Image-71773.jpg"][idx % 5]
+                          : fallbackSrc
                       }
                       alt=""
                       className="absolute inset-0 w-full h-full object-cover blur-xs opacity-25 scale-110 pointer-events-none"
                       onError={(e) => {
-                        (e.target as HTMLImageElement).src = "/images/rose/Image-34333.jpg";
+                        (e.target as HTMLImageElement).src = fallbackSrc;
                       }}
                     />
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -261,13 +266,13 @@ export default function LoveNotesWall() {
                       src={
                         note.imageUrl && !note.imageUrl.includes("polaroid1.jpg") && note.imageUrl.trim() !== ""
                           ? note.imageUrl
-                          : ["/images/rose/Image-34333.jpg", "/images/rose/Image-19816.jpg", "/images/rose/Image-40001.jpg", "/images/rose/Image-2189.jpg", "/images/rose/Image-71773.jpg"][idx % 5]
+                          : fallbackSrc
                       }
                       alt="Memory preview"
                       className="relative z-10 w-full h-full object-contain p-1 hover:scale-105 transition-transform duration-300"
                       loading="lazy"
                       onError={(e) => {
-                        (e.target as HTMLImageElement).src = "/images/rose/Image-34333.jpg";
+                        (e.target as HTMLImageElement).src = fallbackSrc;
                       }}
                     />
                   </div>
@@ -292,7 +297,8 @@ export default function LoveNotesWall() {
                   </button>
                 </div>
               </motion.div>
-            ))}
+            );
+          })}
           </div>
         )}
       </div>
@@ -318,7 +324,7 @@ export default function LoveNotesWall() {
               <div className="flex items-center gap-2 mb-2">
                 <Heart className="w-5 h-5 text-[#FF4D6D] fill-[#FF4D6D]" />
                 <h3 className="font-playfair-luxury text-2xl font-bold text-[#3D0C1A]">
-                  A Birthday Note for Kajal 🎂💖
+                  A Birthday Note for {config.NAME} 🎂💖
                 </h3>
               </div>
               <p className="font-serif-luxury text-sm text-[#7C3F58] mb-6">
@@ -371,7 +377,7 @@ export default function LoveNotesWall() {
                   <textarea
                     rows={4}
                     required
-                    placeholder="Write a heartfelt line, birthday wish, or loving thought for Kajal… 🎂💖"
+                    placeholder={`Write a heartfelt line, birthday wish, or loving thought for ${config.NAME}… 🎂💖`}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     className="w-full px-4 py-3 rounded-xl bg-[#FFF9FA] border border-[#FFD0DB] text-[#3D0C1A] placeholder-[#B58A99] focus:outline-none focus:border-[#FF4D6D] transition-colors resize-none font-serif-luxury text-sm"

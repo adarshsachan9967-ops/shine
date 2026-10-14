@@ -4,7 +4,8 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Play, Pause, SkipBack, SkipForward, Music, Heart, ExternalLink } from "lucide-react";
-import { SITE_CONFIG, BollywoodSongItem } from "@/data/config";
+import { BollywoodSongItem } from "@/data/config";
+import { useSiteConfig } from "@/context/ConfigContext";
 import { sounds } from "@/utils/sound";
 
 export default function MusicPlayer({
@@ -14,7 +15,8 @@ export default function MusicPlayer({
   isPlaying: boolean;
   setIsPlaying: (playing: boolean) => void;
 }) {
-  const songs = SITE_CONFIG.BOLLYWOOD_SONGS;
+  const config = useSiteConfig();
+  const songs = config.BOLLYWOOD_SONGS;
   const [currentIdx, setCurrentIdx] = useState(0);
   const [youtubeActive, setYoutubeActive] = useState(false);
 
@@ -70,7 +72,7 @@ export default function MusicPlayer({
           <span className="inline-block animate-bounce text-2xl md:text-4xl">🎵</span>
         </h2>
         <p className="mt-2 text-sm md:text-base text-[#8A4F60] font-light max-w-lg mx-auto">
-          Handpicked romantic Bollywood cinema melodies dedicated to Kajal 🌸. Tap any song to play the real music!
+          Handpicked romantic Bollywood cinema melodies dedicated to {config.NAME} 🌸. Tap any song to play the real music!
         </p>
       </div>
 
@@ -250,8 +252,8 @@ export default function MusicPlayer({
         })}
       </div>
 
-      {/* Date Night Movie Watchlist for Rose */}
-      {SITE_CONFIG.DATE_NIGHT_MOVIES && (
+      {/* Date Night Movie Watchlist */}
+      {config.DATE_NIGHT_MOVIES && (
         <div className="mt-16 pt-12 border-t border-[#FFCAD4]/40">
           <div className="text-center mb-8">
             <span className="font-handwriting text-2xl text-[#E25875] font-semibold block mb-1">
@@ -266,7 +268,7 @@ export default function MusicPlayer({
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {SITE_CONFIG.DATE_NIGHT_MOVIES.map((movie) => (
+            {config.DATE_NIGHT_MOVIES.map((movie) => (
               <div
                 key={movie.id}
                 className="glass-card rounded-2xl p-5 border border-[#FFCAD4]/60 shadow-md hover:shadow-lg transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1"

@@ -90,6 +90,26 @@ export interface VideoReelItem {
   poster: string;
 }
 
+export interface ScrapbookPhoto {
+  id: string;
+  src: string;
+  caption: string;
+  tapeColor: string;
+  rotation: number;
+  alt: string;
+}
+
+export interface WallPhoto {
+  id: string;
+  src: string;
+  caption: string;
+  subcaption: string;
+  depthZ: number;
+  initialX: number;
+  initialY: number;
+  rotZ: number;
+}
+
 export const SITE_CONFIG = {
   NAME: "Kajal",
   MEGHNA_NAME: "Kajal", // backwards compatibility
@@ -1168,4 +1188,185 @@ export const SITE_CONFIG = {
     title: "Made with all my heart for Kajal's Birthday 🎂💖",
     tagline: "A little universe. Infinite love. Happy Birthday Kajal!",
   },
+
+  LOVE_WHISPERS: [
+    "Happy Birthday to the most gorgeous girl in the world, Kajal! 🎂✨",
+    "Every time I think of your sweet smile, my heart fills with joy. 🌸",
+    "Your eyes have this magical depth that makes poetry feel incomplete. 💖",
+    "Your cheerful laughter is my favorite sound in this entire universe. 🥰",
+    "Thank you for being the greatest blessing in my life, Kajal. 🎂❤️",
+  ],
+
+  SCRAPBOOK_PHOTOS: [
+    {
+      id: "sb-1",
+      src: "/images/kajal/photos/kajal-26.jpg",
+      caption: "Kajal in bloom 🌸",
+      tapeColor: "#FFCAD4",
+      rotation: -3,
+      alt: "Kajal smiling in sunlit bloom",
+    },
+    {
+      id: "sb-2",
+      src: "/images/kajal/photos/kajal-27.jpg",
+      caption: "pure innocence ✨",
+      tapeColor: "#FFE5D9",
+      rotation: 2.5,
+      alt: "Kajal gentle candid smile",
+    },
+    {
+      id: "sb-3",
+      src: "/images/kajal/photos/kajal-28.jpg",
+      caption: "birthday queen 👑",
+      tapeColor: "#D8E2DC",
+      rotation: -2,
+      alt: "Kajal looking royal and radiant",
+    },
+    {
+      id: "sb-4",
+      src: "/images/kajal/photos/kajal-29.jpg",
+      caption: "cutest little pout 🥰",
+      tapeColor: "#ECE4DB",
+      rotation: 3,
+      alt: "Kajal adorable candid expression",
+    },
+    {
+      id: "sb-5",
+      src: "/images/kajal/photos/kajal-30.jpg",
+      caption: "sparkling joy 🎂",
+      tapeColor: "#FFCAD4",
+      rotation: -2.5,
+      alt: "Kajal laughing cheerfully",
+    },
+    {
+      id: "sb-6",
+      src: "/images/kajal/photos/kajal-31.jpg",
+      caption: "stylish & modern 😎",
+      tapeColor: "#FFE5D9",
+      rotation: 2,
+      alt: "Kajal chic stylish pose",
+    },
+    {
+      id: "sb-7",
+      src: "/images/kajal/photos/kajal-32.jpg",
+      caption: "midnight glow 🌙",
+      tapeColor: "#D8E2DC",
+      rotation: -3,
+      alt: "Kajal twilight serene portrait",
+    },
+    {
+      id: "sb-8",
+      src: "/images/kajal/photos/kajal-33.jpg",
+      caption: "sweet moments ☕",
+      tapeColor: "#ECE4DB",
+      rotation: 2.5,
+      alt: "Kajal relaxed cozy afternoon",
+    },
+  ] as ScrapbookPhoto[],
+
+  WALL_PHOTOS: [
+    {
+      id: "pw-1",
+      src: "/images/kajal/photos/kajal-16.jpg",
+      caption: "Birthday Radiance 🎂✨",
+      subcaption: "Glowing with pure happiness on her special birthday.",
+      depthZ: 60,
+      initialX: -260,
+      initialY: -60,
+      rotZ: -4,
+    },
+    {
+      id: "pw-2",
+      src: "/images/kajal/photos/kajal-17.jpg",
+      caption: "Soulful Elegance 🌸",
+      subcaption: "That gentle grace and quiet beauty that captures every heart.",
+      depthZ: 110,
+      initialX: 0,
+      initialY: -40,
+      rotZ: 2,
+    },
+    {
+      id: "pw-3",
+      src: "/images/kajal/photos/kajal-18.jpg",
+      caption: "Timeless Queen 👑",
+      subcaption: "Breathtaking poise and a gorgeous, confident aura.",
+      depthZ: 40,
+      initialX: 250,
+      initialY: 40,
+      rotZ: -3,
+    },
+    {
+      id: "pw-4",
+      src: "/images/kajal/photos/kajal-19.jpg",
+      caption: "Sweetest Laughter 🥰",
+      subcaption: "Cute smiles and playful spirit that lights up the world.",
+      depthZ: 90,
+      initialX: -140,
+      initialY: 130,
+      rotZ: 3,
+    },
+    {
+      id: "pw-5",
+      src: "/images/kajal/photos/kajal-20.jpg",
+      caption: "Gentle Charm 💖",
+      subcaption: "Every single candid moment with Kajal is pure magic.",
+      depthZ: 70,
+      initialX: 160,
+      initialY: -140,
+      rotZ: -2,
+    },
+    {
+      id: "pw-6",
+      src: "/images/kajal/photos/kajal-21.jpg",
+      caption: "Effortless Chic ✨",
+      subcaption: "Modern style, dazzling presence, and unmatched grace.",
+      depthZ: 50,
+      initialX: -320,
+      initialY: 90,
+      rotZ: -3,
+    },
+    {
+      id: "pw-7",
+      src: "/images/kajal/photos/kajal-22.jpg",
+      caption: "Warm Conversations ☕",
+      subcaption: "Sweetest talks, peaceful vibes, and unforgettable laughs.",
+      depthZ: 85,
+      initialX: 310,
+      initialY: -70,
+      rotZ: 3.5,
+    },
+    {
+      id: "pw-8",
+      src: "/images/kajal/photos/kajal-23.jpg",
+      caption: "Kajal Ki Kashish 🌙",
+      subcaption: "Those deep dreamy eyes that speak without saying a word.",
+      depthZ: 65,
+      initialX: -60,
+      initialY: 170,
+      rotZ: -2,
+    },
+    {
+      id: "pw-9",
+      src: "/images/kajal/photos/kajal-24.jpg",
+      caption: "Unfiltered Joy 🎶",
+      subcaption: "The cheerful laughter that makes everything feel so soft and light.",
+      depthZ: 95,
+      initialX: 120,
+      initialY: 120,
+      rotZ: 2,
+    },
+    {
+      id: "pw-10",
+      src: "/images/kajal/photos/kajal-25.jpg",
+      caption: "A Treasured Angel 💖",
+      subcaption: "Cherished forever and always in my heart, Kajal.",
+      depthZ: 75,
+      initialX: -190,
+      initialY: -160,
+      rotZ: 3,
+    },
+  ] as WallPhoto[],
 };
+
+export type SiteConfig = typeof SITE_CONFIG;
+

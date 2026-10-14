@@ -4,16 +4,9 @@ import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Eye, LayoutGrid, SlidersHorizontal, Sparkles } from "lucide-react";
-import { SITE_CONFIG, MemoryItem } from "@/data/config";
+import { MemoryItem } from "@/data/config";
+import { useSiteConfig } from "@/context/ConfigContext";
 import MemoryLightbox from "./MemoryLightbox";
-
-const CATEGORIES: { label: string; value: string }[] = [
-  { label: "All Memories (64) 🎂", value: "all" },
-  { label: "Smiles 🌸", value: "smiles" },
-  { label: "Favorites ✨", value: "favorites" },
-  { label: "Special Moments 💖", value: "moments" },
-  { label: "Quiet Places ☕", value: "places" },
-];
 
 const TAPE_COLORS = ["#FFCAD4", "#FFE5D9", "#D8E2DC", "#ECE4DB", "#FAD2E1", "#E2ECE9"];
 
@@ -105,11 +98,20 @@ function MemoryCard({
 }
 
 export default function MemoryCarousel() {
-  const allMemories = SITE_CONFIG.MEMORIES;
+  const config = useSiteConfig();
+  const allMemories = config.MEMORIES;
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [viewMode, setViewMode] = useState<"grid" | "carousel">("grid");
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const scrollRef = useRef<HTMLDivElement | null>(null);
+
+  const categories = [
+    { label: `All Memories (${allMemories.length}) 🎂`, value: "all" },
+    { label: "Smiles 🌸", value: "smiles" },
+    { label: "Favorites ✨", value: "favorites" },
+    { label: "Special Moments 💖", value: "moments" },
+    { label: "Quiet Places ☕", value: "places" },
+  ];
 
   const filteredMemories =
     selectedCategory === "all"
@@ -162,14 +164,14 @@ export default function MemoryCarousel() {
           </span>
         </motion.h2>
         <p className="mt-3 text-sm md:text-base text-[#8A4F60] font-light max-w-lg mx-auto">
-          Explore all 64 photos of Birthday Girl Kajal 🎂💖. Tap any polaroid snapshot to enlarge in full screen!
+          Explore all {allMemories.length} photos of Birthday Girl {config.NAME} 🎂💖. Tap any polaroid snapshot to enlarge in full screen!
         </p>
 
         {/* Controls Bar: Category Filters & Grid/Carousel Toggle */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-8 max-w-5xl mx-auto px-2">
           {/* Category Filter Pills */}
           <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2">
-            {CATEGORIES.map((cat) => (
+            {categories.map((cat) => (
               <button
                 key={cat.value}
                 onClick={() => {
@@ -233,7 +235,7 @@ export default function MemoryCarousel() {
           <div className="text-center mt-12">
             <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/90 border border-[#FFCAD4] text-xs sm:text-sm font-medium text-[#4A1525] shadow-xs">
               <Sparkles className="w-4 h-4 text-[#E25875]" />
-              Showing all {filteredMemories.length} cherished memories of Kajal 🎂💖
+              Showing all {filteredMemories.length} cherished memories of {config.NAME} 🎂💖
             </span>
           </div>
         </div>

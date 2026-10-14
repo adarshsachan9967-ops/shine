@@ -5,13 +5,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import confetti from "canvas-confetti";
 import { Heart, Sparkles } from "lucide-react";
-import { SITE_CONFIG } from "@/data/config";
+import { useSiteConfig } from "@/context/ConfigContext";
 import { sounds } from "@/utils/sound";
 
 export default function InteractiveHeart() {
+  const config = useSiteConfig();
   const [clickCount, setClickCount] = useState(0);
   const [isBouncing, setIsBouncing] = useState(false);
-  const steps = SITE_CONFIG.INTERACTIVE_HEART.steps;
+  const steps = config.INTERACTIVE_HEART.steps;
 
   const currentStep = steps[Math.min(clickCount, steps.length - 1)];
 

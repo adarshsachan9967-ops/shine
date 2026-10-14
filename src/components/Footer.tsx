@@ -3,14 +3,15 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Heart, X, Sparkles } from "lucide-react";
-import { SITE_CONFIG } from "@/data/config";
+import { useSiteConfig } from "@/context/ConfigContext";
 import { sounds } from "@/utils/sound";
 
 export default function Footer() {
+  const config = useSiteConfig();
   const [clickCount, setClickCount] = useState(0);
   const [showSecret, setShowSecret] = useState(false);
-  const { title, tagline } = SITE_CONFIG.FOOTER;
-  const secret = SITE_CONFIG.SECRET_MESSAGE;
+  const { title, tagline } = config.FOOTER;
+  const secret = config.SECRET_MESSAGE;
 
   const handleHeartClick = () => {
     sounds.playHeartChime();

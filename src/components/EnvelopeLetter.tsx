@@ -3,12 +3,13 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mail, Heart, Sparkles, RefreshCw } from "lucide-react";
-import { SITE_CONFIG } from "@/data/config";
+import { useSiteConfig } from "@/context/ConfigContext";
 import { sounds } from "@/utils/sound";
 
 export default function EnvelopeLetter() {
+  const config = useSiteConfig();
   const [isOpen, setIsOpen] = useState(false);
-  const letter = SITE_CONFIG.LETTER;
+  const letter = config.LETTER;
 
   const handleOpen = () => {
     sounds.playEnvelopeOpen();
@@ -25,7 +26,7 @@ export default function EnvelopeLetter() {
           From The Heart
         </span>
         <h2 className="font-playfair-luxury text-3xl sm:text-5xl md:text-6xl font-bold text-[#3D0C1A]">
-          A letter for Kajal <span className="inline-block animate-pulse">💌🎂</span>
+          A letter for {config.NAME} <span className="inline-block animate-pulse">💌🎂</span>
         </h2>
         <p className="mt-2 text-sm md:text-base text-[#8A4F60] font-light">
           {isOpen ? "Written with love, kept forever." : "There is an envelope waiting for you. Click to open it."}

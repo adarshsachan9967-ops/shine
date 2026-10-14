@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Clock, Heart } from "lucide-react";
-import { SITE_CONFIG } from "@/data/config";
+import { useSiteConfig } from "@/context/ConfigContext";
 
 interface TimeUnits {
   days: number;
@@ -13,7 +13,8 @@ interface TimeUnits {
 }
 
 export default function MemoryTimer() {
-  const { DAYS_COUNT, TIMER_HEADING, TIMER_SUBTITLE } = SITE_CONFIG;
+  const config = useSiteConfig();
+  const { DAYS_COUNT, TIMER_HEADING, TIMER_SUBTITLE } = config;
   const [timePassed, setTimePassed] = useState<TimeUnits>({
     days: DAYS_COUNT || 823,
     hours: 0,

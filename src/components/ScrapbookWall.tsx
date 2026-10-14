@@ -5,83 +5,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Sparkles, Heart } from "lucide-react";
 import MemoryLightbox from "./MemoryLightbox";
-import { MemoryItem } from "@/data/config";
-
-interface ScrapbookPhoto {
-  id: string;
-  src: string;
-  caption: string;
-  tapeColor: string;
-  rotation: number;
-  alt: string;
-}
-
-const SCRAPBOOK_PHOTOS: ScrapbookPhoto[] = [
-  {
-    id: "sb-1",
-    src: "/images/kajal/photos/kajal-26.jpg",
-    caption: "Kajal in bloom 🌸",
-    tapeColor: "#FFCAD4",
-    rotation: -3,
-    alt: "Kajal smiling in sunlit bloom",
-  },
-  {
-    id: "sb-2",
-    src: "/images/kajal/photos/kajal-27.jpg",
-    caption: "pure innocence ✨",
-    tapeColor: "#FFE5D9",
-    rotation: 2.5,
-    alt: "Kajal gentle candid smile",
-  },
-  {
-    id: "sb-3",
-    src: "/images/kajal/photos/kajal-28.jpg",
-    caption: "birthday queen 👑",
-    tapeColor: "#D8E2DC",
-    rotation: -2,
-    alt: "Kajal looking royal and radiant",
-  },
-  {
-    id: "sb-4",
-    src: "/images/kajal/photos/kajal-29.jpg",
-    caption: "cutest little pout 🥰",
-    tapeColor: "#ECE4DB",
-    rotation: 3,
-    alt: "Kajal adorable candid expression",
-  },
-  {
-    id: "sb-5",
-    src: "/images/kajal/photos/kajal-30.jpg",
-    caption: "sparkling joy 🎂",
-    tapeColor: "#FFCAD4",
-    rotation: -2.5,
-    alt: "Kajal laughing cheerfully",
-  },
-  {
-    id: "sb-6",
-    src: "/images/kajal/photos/kajal-31.jpg",
-    caption: "stylish & modern 😎",
-    tapeColor: "#FFE5D9",
-    rotation: 2,
-    alt: "Kajal chic stylish pose",
-  },
-  {
-    id: "sb-7",
-    src: "/images/kajal/photos/kajal-32.jpg",
-    caption: "midnight glow 🌙",
-    tapeColor: "#D8E2DC",
-    rotation: -3,
-    alt: "Kajal twilight serene portrait",
-  },
-  {
-    id: "sb-8",
-    src: "/images/kajal/photos/kajal-33.jpg",
-    caption: "sweet moments ☕",
-    tapeColor: "#ECE4DB",
-    rotation: 2.5,
-    alt: "Kajal relaxed cozy afternoon",
-  },
-];
+import { MemoryItem, ScrapbookPhoto } from "@/data/config";
+import { useSiteConfig } from "@/context/ConfigContext";
 
 function ScrapbookCard({
   photo,
@@ -90,14 +15,14 @@ function ScrapbookCard({
   photo: ScrapbookPhoto;
   onOpen: () => void;
 }) {
-  const [src, setSrc] = useState(`${photo.src}?v=kajal_bday`);
+  const [src, setSrc] = useState(photo.src);
 
   const handleError = () => {
     // If .jpg failed, try .jpeg
     if (src.includes(".jpg")) {
-      setSrc(photo.src.replace(".jpg", ".jpeg") + "?v=kajal_bday_alt");
+      setSrc(photo.src.replace(".jpg", ".jpeg"));
     } else if (src.includes(".jpeg")) {
-      setSrc(photo.src.replace(".jpeg", ".jpg") + "?v=kajal_bday_alt");
+      setSrc(photo.src.replace(".jpeg", ".jpg"));
     }
   };
 
@@ -155,6 +80,8 @@ function ScrapbookCard({
 }
 
 export default function ScrapbookWall() {
+  const config = useSiteConfig();
+  const photos = config.SCRAPBOOK_PHOTOS;
   const [activePhoto, setActivePhoto] = useState<MemoryItem | null>(null);
 
   const openLightbox = (photo: ScrapbookPhoto) => {
@@ -187,7 +114,7 @@ export default function ScrapbookWall() {
 
       {/* Scattered Polaroid Grid */}
       <div className="w-full max-w-7xl 2xl:max-w-[1600px] mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 md:gap-8 lg:gap-10 relative z-10">
-        {SCRAPBOOK_PHOTOS.map((photo) => (
+        {photos.map((photo) => (
           <ScrapbookCard
             key={photo.id}
             photo={photo}

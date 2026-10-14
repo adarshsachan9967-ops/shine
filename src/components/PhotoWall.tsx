@@ -4,122 +4,12 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { X, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react";
-
-interface WallPhoto {
-  id: string;
-  src: string;
-  caption: string;
-  subcaption: string;
-  depthZ: number;
-  initialX: number;
-  initialY: number;
-  rotZ: number;
-}
-
-const WALL_PHOTOS: WallPhoto[] = [
-  {
-    id: "pw-1",
-    src: "/images/kajal/photos/kajal-16.jpg",
-    caption: "Birthday Radiance 🎂✨",
-    subcaption: "Glowing with pure happiness on her special birthday.",
-    depthZ: 60,
-    initialX: -260,
-    initialY: -60,
-    rotZ: -4,
-  },
-  {
-    id: "pw-2",
-    src: "/images/kajal/photos/kajal-17.jpg",
-    caption: "Soulful Elegance 🌸",
-    subcaption: "That gentle grace and quiet beauty that captures every heart.",
-    depthZ: 110,
-    initialX: 0,
-    initialY: -40,
-    rotZ: 2,
-  },
-  {
-    id: "pw-3",
-    src: "/images/kajal/photos/kajal-18.jpg",
-    caption: "Timeless Queen 👑",
-    subcaption: "Breathtaking poise and a gorgeous, confident aura.",
-    depthZ: 40,
-    initialX: 250,
-    initialY: 40,
-    rotZ: -3,
-  },
-  {
-    id: "pw-4",
-    src: "/images/kajal/photos/kajal-19.jpg",
-    caption: "Sweetest Laughter 🥰",
-    subcaption: "Cute smiles and playful spirit that lights up the world.",
-    depthZ: 90,
-    initialX: -140,
-    initialY: 130,
-    rotZ: 3,
-  },
-  {
-    id: "pw-5",
-    src: "/images/kajal/photos/kajal-20.jpg",
-    caption: "Gentle Charm 💖",
-    subcaption: "Every single candid moment with Kajal is pure magic.",
-    depthZ: 70,
-    initialX: 160,
-    initialY: -140,
-    rotZ: -2,
-  },
-  {
-    id: "pw-6",
-    src: "/images/kajal/photos/kajal-21.jpg",
-    caption: "Effortless Chic ✨",
-    subcaption: "Modern style, dazzling presence, and unmatched grace.",
-    depthZ: 50,
-    initialX: -320,
-    initialY: 90,
-    rotZ: -3,
-  },
-  {
-    id: "pw-7",
-    src: "/images/kajal/photos/kajal-22.jpg",
-    caption: "Warm Conversations ☕",
-    subcaption: "Sweetest talks, peaceful vibes, and unforgettable laughs.",
-    depthZ: 85,
-    initialX: 310,
-    initialY: -70,
-    rotZ: 3.5,
-  },
-  {
-    id: "pw-8",
-    src: "/images/kajal/photos/kajal-23.jpg",
-    caption: "Kajal Ki Kashish 🌙",
-    subcaption: "Those deep dreamy eyes that speak without saying a word.",
-    depthZ: 65,
-    initialX: -60,
-    initialY: 170,
-    rotZ: -2,
-  },
-  {
-    id: "pw-9",
-    src: "/images/kajal/photos/kajal-24.jpg",
-    caption: "Unfiltered Joy 🎶",
-    subcaption: "The cheerful laughter that makes everything feel so soft and light.",
-    depthZ: 95,
-    initialX: 120,
-    initialY: 120,
-    rotZ: 2,
-  },
-  {
-    id: "pw-10",
-    src: "/images/kajal/photos/kajal-25.jpg",
-    caption: "A Treasured Angel 💖",
-    subcaption: "Cherished forever and always in my heart, Kajal.",
-    depthZ: 75,
-    initialX: -190,
-    initialY: -160,
-    rotZ: 3,
-  },
-];
+import { WallPhoto } from "@/data/config";
+import { useSiteConfig } from "@/context/ConfigContext";
 
 export default function PhotoWall() {
+  const config = useSiteConfig();
+  const photos = config.WALL_PHOTOS;
   const [selectedPhoto, setSelectedPhoto] = useState<WallPhoto | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mobileScrollRef = useRef<HTMLDivElement | null>(null);
@@ -143,7 +33,7 @@ export default function PhotoWall() {
 
   const scrollMobile = (direction: "prev" | "next") => {
     const next = direction === "next" 
-      ? Math.min(mobileIdx + 1, WALL_PHOTOS.length - 1)
+      ? Math.min(mobileIdx + 1, photos.length - 1)
       : Math.max(mobileIdx - 1, 0);
     setMobileIdx(next);
     if (mobileScrollRef.current) {
@@ -176,7 +66,7 @@ export default function PhotoWall() {
       <div className="md:hidden relative w-full px-2">
         <div className="flex items-center justify-between mb-4 px-2">
           <span className="text-xs font-semibold uppercase tracking-wider text-[#FF758F]">
-            Memory {mobileIdx + 1} of {WALL_PHOTOS.length}
+            Memory {mobileIdx + 1} of {photos.length}
           </span>
           <div className="flex items-center gap-2">
             <button
@@ -189,7 +79,7 @@ export default function PhotoWall() {
             </button>
             <button
               onClick={() => scrollMobile("next")}
-              disabled={mobileIdx === WALL_PHOTOS.length - 1}
+              disabled={mobileIdx === photos.length - 1}
               className="p-2 rounded-full bg-white/90 border border-[#FFCAD4] text-[#4A1525] disabled:opacity-40 shadow-xs"
               aria-label="Next photo"
             >
@@ -203,7 +93,7 @@ export default function PhotoWall() {
           className="flex items-center gap-4 overflow-x-auto py-4 px-2 snap-x snap-mandatory no-scrollbar"
           style={{ scrollbarWidth: "none" }}
         >
-          {WALL_PHOTOS.map((photo, i) => (
+          {photos.map((photo, i) => (
             <div
               key={photo.id}
               onClick={() => setSelectedPhoto(photo)}
@@ -269,7 +159,7 @@ export default function PhotoWall() {
           className="relative w-full h-full flex items-center justify-center"
           style={{ transformStyle: "preserve-3d" }}
         >
-          {WALL_PHOTOS.map((photo) => (
+          {photos.map((photo) => (
             <motion.div
               key={photo.id}
               onClick={() => setSelectedPhoto(photo)}

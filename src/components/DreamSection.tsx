@@ -3,11 +3,13 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, Moon, Star, Heart, X } from "lucide-react";
-import { SITE_CONFIG, StarWish } from "@/data/config";
+import { StarWish } from "@/data/config";
+import { useSiteConfig } from "@/context/ConfigContext";
 import { sounds } from "@/utils/sound";
 
 export default function DreamSection() {
-  const wishes = SITE_CONFIG.STAR_WISHES;
+  const config = useSiteConfig();
+  const wishes = config.STAR_WISHES;
   const [activeWish, setActiveWish] = useState<StarWish | null>(null);
 
   const handleStarClick = (star: StarWish) => {

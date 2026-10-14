@@ -4,7 +4,8 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Smile, Eye, Music, Sparkle, Sparkles, Heart, X } from "lucide-react";
-import { SITE_CONFIG, LoveCardItem } from "@/data/config";
+import { LoveCardItem } from "@/data/config";
+import { useSiteConfig } from "@/context/ConfigContext";
 import { sounds } from "@/utils/sound";
 
 const iconMap: Record<string, React.ElementType> = {
@@ -17,7 +18,8 @@ const iconMap: Record<string, React.ElementType> = {
 };
 
 export default function LoveCards() {
-  const cards = SITE_CONFIG.LOVE_CARDS;
+  const config = useSiteConfig();
+  const cards = config.LOVE_CARDS;
   const [selectedCard, setSelectedCard] = useState<LoveCardItem | null>(null);
 
   const handleCardClick = (card: LoveCardItem) => {
@@ -46,7 +48,7 @@ export default function LoveCards() {
           viewport={{ once: true }}
           className="font-playfair-luxury text-3xl sm:text-5xl md:text-6xl font-bold text-[#3D0C1A] leading-tight"
         >
-          Little things about Birthday Girl Kajal
+          Little things about Birthday Girl {config.NAME}
           <span className="block italic text-[#FF758F] font-serif-luxury">
             that make everything magical. 🎂💖
           </span>

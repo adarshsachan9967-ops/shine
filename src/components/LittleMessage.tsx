@@ -3,20 +3,20 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Heart, Sparkles, Send } from "lucide-react";
-import { SITE_CONFIG } from "@/data/config";
+import { useSiteConfig } from "@/context/ConfigContext";
 import { sounds } from "@/utils/sound";
 import confetti from "canvas-confetti";
 
-const LOVE_WHISPERS = [
-  "Happy Birthday to the most gorgeous girl in the world, Kajal! 🎂✨",
-  "Every time I think of your sweet smile, my heart fills with joy. 🌸",
-  "Your eyes have this magical depth that makes poetry feel incomplete. 💖",
-  "Your cheerful laughter is my favorite sound in this entire universe. 🥰",
-  "Thank you for being the greatest blessing in my life, Kajal. 🎂❤️",
-];
-
 export default function LittleMessage() {
-  const { badge, heading, body, signature } = SITE_CONFIG.LOVE_MESSAGE;
+  const config = useSiteConfig();
+  const { badge, heading, body, signature } = config.LOVE_MESSAGE;
+  const LOVE_WHISPERS = config.LOVE_WHISPERS || [
+    `Happy Birthday to the most gorgeous girl in the world, ${config.NAME}! 🎂✨`,
+    "Every time I think of your sweet smile, my heart fills with joy. 🌸",
+    "Your eyes have this magical depth that makes poetry feel incomplete. 💖",
+    "Your cheerful laughter is my favorite sound in this entire universe. 🥰",
+    `Thank you for being the greatest blessing in my life, ${config.NAME}. 🎂❤️`,
+  ];
   const [whisperIdx, setWhisperIdx] = useState(0);
   const [heartBurst, setHeartBurst] = useState(false);
 

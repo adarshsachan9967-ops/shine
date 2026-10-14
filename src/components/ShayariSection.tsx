@@ -4,11 +4,13 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Feather, ChevronLeft, ChevronRight, Copy, Check, Heart, Sparkles, BookOpen } from "lucide-react";
-import { SITE_CONFIG, ShayariItem } from "@/data/config";
+import { ShayariItem } from "@/data/config";
+import { useSiteConfig } from "@/context/ConfigContext";
 import { sounds } from "@/utils/sound";
 
 export default function ShayariSection() {
-  const { badge, title, subtitle, shayaris } = SITE_CONFIG.SHAYARI_SECTION;
+  const config = useSiteConfig();
+  const { badge, title, subtitle, shayaris } = config.SHAYARI_SECTION;
   const [activeIdx, setActiveIdx] = useState(0);
   const [copied, setCopied] = useState(false);
 
@@ -144,7 +146,7 @@ export default function ShayariSection() {
                   </button>
 
                   <span className="font-handwriting text-xl text-[#E25875]">
-                    For Birthday Girl Kajal 🎂💖
+                    For Birthday Girl {config.NAME} 🎂💖
                   </span>
                 </div>
               </div>

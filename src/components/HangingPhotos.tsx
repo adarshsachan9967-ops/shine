@@ -3,11 +3,13 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { SITE_CONFIG, HangingPhotoItem } from "@/data/config";
+import { HangingPhotoItem } from "@/data/config";
+import { useSiteConfig } from "@/context/ConfigContext";
 import MemoryLightbox from "./MemoryLightbox";
 
 export default function HangingPhotos() {
-  const photos = SITE_CONFIG.HANGING_PHOTOS;
+  const config = useSiteConfig();
+  const photos = config.HANGING_PHOTOS;
   const [selectedPhoto, setSelectedPhoto] = useState<HangingPhotoItem | null>(null);
 
   return (

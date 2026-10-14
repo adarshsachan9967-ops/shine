@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Volume2, VolumeX, Menu, X, Music } from "lucide-react";
 import { sounds } from "@/utils/sound";
+import { useSiteConfig } from "@/context/ConfigContext";
 
 export default function Navbar({
   isAudioPlaying,
@@ -12,6 +13,7 @@ export default function Navbar({
   isAudioPlaying?: boolean;
   onToggleAudio?: () => void;
 }) {
+  const config = useSiteConfig();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
@@ -55,11 +57,11 @@ export default function Navbar({
             scrolled ? "shadow-md py-2 px-5 sm:px-7" : ""
           } w-full max-w-6xl xl:max-w-7xl`}
         >
-          {/* Logo for Kajal */}
+          {/* Logo */}
           <a
             href="#hero"
             className="flex items-center gap-2 font-serif-luxury text-xl md:text-2xl font-bold tracking-tight group"
-            title="Kajal 🎂💖"
+            title={`${config.NAME} 🎂💖`}
           >
             <div className="relative w-8 h-8 flex items-center justify-center rounded-full bg-gradient-to-tr from-[#FFCAD4] via-[#FFE5EC] to-[#FFF0F3] border border-[#FF758F]/50 shadow-sm group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(255,77,109,0.4)] transition-all duration-300">
               <span className="text-base select-none group-hover:rotate-12 transition-transform duration-300">👑</span>
@@ -69,7 +71,7 @@ export default function Navbar({
               </span>
             </div>
             <span className="font-serif-luxury tracking-wide text-xl md:text-2xl bg-gradient-to-r from-[#4A1525] via-[#8A2846] to-[#E63956] bg-clip-text text-transparent group-hover:opacity-90 transition-opacity">
-              Kajal ✨
+              {config.NAME} ✨
             </span>
           </a>
 

@@ -4,10 +4,11 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Heart, Sparkles } from "lucide-react";
-import { SITE_CONFIG } from "@/data/config";
+import { useSiteConfig } from "@/context/ConfigContext";
 
 export default function SplitStory() {
-  const { heading, body, quote, image } = SITE_CONFIG.SPLIT_SECTION;
+  const config = useSiteConfig();
+  const { heading, body, quote, image } = config.SPLIT_SECTION;
 
   return (
     <section className="relative py-28 md:py-36 px-4 sm:px-6 lg:px-8 w-full max-w-7xl 2xl:max-w-[1550px] mx-auto overflow-hidden">
@@ -30,7 +31,7 @@ export default function SplitStory() {
             <div className="relative w-full h-full rounded-2xl overflow-hidden bg-[#FFF5F7]">
               {/* Ambient blur fill */}
               <Image
-                src={image || "/images/kajal/photos/kajal-01.jpg"}
+                src={image}
                 alt=""
                 fill
                 className="object-cover blur-xs opacity-25 scale-110 pointer-events-none"
@@ -38,8 +39,8 @@ export default function SplitStory() {
               />
               {/* Unclipped full image */}
               <Image
-                src={image || "/images/kajal/photos/kajal-01.jpg"}
-                alt="Kajal quiet moments"
+                src={image}
+                alt={`${config.NAME} quiet moments`}
                 fill
                 className="object-contain p-1 relative z-10"
                 sizes="(max-width: 1024px) 100vw, 600px"

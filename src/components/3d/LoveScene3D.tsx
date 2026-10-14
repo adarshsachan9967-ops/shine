@@ -5,6 +5,7 @@ import * as THREE from "three";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, Heart, Moon, Star } from "lucide-react";
 import { sounds } from "@/utils/sound";
+import { useSiteConfig } from "@/context/ConfigContext";
 
 interface StarWishBubble {
   id: number;
@@ -14,30 +15,31 @@ interface StarWishBubble {
   isHeartHit: boolean;
 }
 
-const HEART_TAP_WORDS = [
-  "You tapped Kajal's Heart! 🎂💖",
-  "Dil Ki Dhadkan ✨",
-  "My Favorite Smile 🥰",
-  "Pure Magic 🌸",
-  "Beating Just For You 💕",
-  "Birthday Queen 👑",
-  "Infinite Love ❤️",
-  "Happy Birthday Kajal! 🎂🎉",
-];
-
-const SKY_WISH_WORDS = [
-  "Pari 🌸",
-  "Muskaan ✨",
-  "Sweet Dreams 🌙",
-  "Sweetheart 🍬",
-  "Always Cherished 💖",
-  "Kajal 🎂💖",
-];
-
 export default function LoveScene3D() {
+  const config = useSiteConfig();
   const mountRef = useRef<HTMLDivElement | null>(null);
   const [wishes, setWishes] = useState<StarWishBubble[]>([]);
   const [activeWordIdx, setActiveWordIdx] = useState(0);
+
+  const HEART_TAP_WORDS = [
+    `You tapped ${config.NAME}'s Heart! 🎂💖`,
+    "Dil Ki Dhadkan ✨",
+    "My Favorite Smile 🥰",
+    "Pure Magic 🌸",
+    "Beating Just For You 💕",
+    "Birthday Queen 👑",
+    "Infinite Love ❤️",
+    `Happy Birthday ${config.NAME}! 🎂🎉`,
+  ];
+
+  const SKY_WISH_WORDS = [
+    "Pari 🌸",
+    "Muskaan ✨",
+    "Sweet Dreams 🌙",
+    "Sweetheart 🍬",
+    "Always Cherished 💖",
+    `${config.NAME} 🎂💖`,
+  ];
 
   const spawnWishBubble = (x: number, y: number, isHeartHit: boolean) => {
     const wordList = isHeartHit ? HEART_TAP_WORDS : SKY_WISH_WORDS;

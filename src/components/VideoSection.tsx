@@ -3,10 +3,12 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, Pause, Volume2, VolumeX, ChevronLeft, ChevronRight, Film, Sparkles } from "lucide-react";
-import { SITE_CONFIG, VideoReelItem } from "@/data/config";
+import { VideoReelItem } from "@/data/config";
+import { useSiteConfig } from "@/context/ConfigContext";
 
 export default function VideoSection() {
-  const { quote, reels } = SITE_CONFIG.VIDEO_SECTION;
+  const config = useSiteConfig();
+  const { quote, reels } = config.VIDEO_SECTION;
   const [activeIdx, setActiveIdx] = useState(0);
   const currentReel = reels[activeIdx] || reels[0];
 
@@ -57,7 +59,7 @@ export default function VideoSection() {
           Sweet Moments in Motion 🎂💖
         </span>
         <h2 className="font-playfair-luxury text-3xl sm:text-4xl md:text-5xl font-bold text-[#3D0C1A]">
-          Kajal's Video Vault
+          {config.NAME}'s Video Vault
         </h2>
         <p className="mt-2 text-sm md:text-base text-[#8A4F60] font-light max-w-md mx-auto">
           Every movement, laugh, and glance captured in time. Tap unmute to hear the music and watch each clip!
@@ -168,7 +170,7 @@ export default function VideoSection() {
                 “{quote}”
               </p>
               <span className="font-handwriting text-xl text-[#FFCAD4] mt-1 block">
-                Kajal 💖
+                {config.NAME} 💖
               </span>
             </motion.div>
           </div>

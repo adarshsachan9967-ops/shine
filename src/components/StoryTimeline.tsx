@@ -4,7 +4,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Sparkles, Heart, Camera, Infinity } from "lucide-react";
-import { SITE_CONFIG, StoryItem } from "@/data/config";
+import { StoryItem } from "@/data/config";
+import { useSiteConfig } from "@/context/ConfigContext";
 
 const iconMap: Record<string, React.ElementType> = {
   Sparkles,
@@ -14,7 +15,8 @@ const iconMap: Record<string, React.ElementType> = {
 };
 
 export default function StoryTimeline() {
-  const items = SITE_CONFIG.STORY_ITEMS;
+  const config = useSiteConfig();
+  const items = config.STORY_ITEMS;
 
   return (
     <section id="story" className="relative py-24 md:py-32 px-4 sm:px-6 lg:px-8 w-full max-w-7xl 2xl:max-w-[1550px] mx-auto overflow-hidden">

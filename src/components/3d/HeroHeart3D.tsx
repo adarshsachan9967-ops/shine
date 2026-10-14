@@ -5,6 +5,7 @@ import * as THREE from "three";
 import { motion, AnimatePresence } from "framer-motion";
 import { sounds } from "@/utils/sound";
 import { Sparkles, Heart } from "lucide-react";
+import { useSiteConfig } from "@/context/ConfigContext";
 
 interface FloatingLove {
   id: number;
@@ -13,24 +14,25 @@ interface FloatingLove {
   emoji: string;
 }
 
-const SWEET_MESSAGES = [
-  "Tap the heart for birthday magic ❤️",
-  "Happy Birthday, Dearest Kajal! 🎂💖",
-  "That smile of yours is pure magic ✨",
-  "Thinking of you makes every day sweeter 🌸",
-  "You have my whole heart! 🥰",
-  "A little universe made just for you 🌙",
-  "Infinite love, laughter & happiness for you 💕",
-];
-
 const EMOJIS = ["💖", "💕", "🌸", "✨", "💌", "🥰", "🍬", "🌹"];
 
 export default function HeroHeart3D() {
+  const config = useSiteConfig();
   const mountRef = useRef<HTMLDivElement | null>(null);
   const heartMeshRef = useRef<THREE.Mesh | null>(null);
   const [tapCount, setTapCount] = useState(0);
   const [floatingHearts, setFloatingHearts] = useState<FloatingLove[]>([]);
   const [isBeating, setIsBeating] = useState(false);
+
+  const SWEET_MESSAGES = [
+    "Tap the heart for birthday magic ❤️",
+    `Happy Birthday, Dearest ${config.NAME}! 🎂💖`,
+    "That smile of yours is pure magic ✨",
+    "Thinking of you makes every day sweeter 🌸",
+    "You have my whole heart! 🥰",
+    "A little universe made just for you 🌙",
+    "Infinite love, laughter & happiness for you 💕",
+  ];
 
   const handleHeartTap = () => {
     sounds.playHeartChime();
@@ -281,7 +283,7 @@ export default function HeroHeart3D() {
         ref={mountRef}
         onClick={handleHeartTap}
         className="w-full h-[320px] sm:h-[380px] md:h-[440px] flex items-center justify-center cursor-pointer relative active:scale-95 transition-transform duration-200"
-        aria-label="3D Interactive Floating Glass Heart for Kajal - Tap for love"
+        aria-label={`3D Interactive Floating Glass Heart for ${config.NAME} - Tap for love`}
       >
         {/* Beating ripple ring aura when tapped */}
         {isBeating && (

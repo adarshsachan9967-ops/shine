@@ -2,11 +2,12 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { SITE_CONFIG } from "@/data/config";
+import { useSiteConfig } from "@/context/ConfigContext";
 import { Sun, Sparkles } from "lucide-react";
 
 export default function SunsetWishSection() {
-  const wishes = SITE_CONFIG.SUNSET_WISHES;
+  const config = useSiteConfig();
+  const wishes = config.SUNSET_WISHES;
 
   return (
     <section className="relative py-32 md:py-44 px-4 overflow-hidden bg-gradient-to-b from-[#FFFDFB] via-[#FFE3D8] to-[#FFD8C9] transition-colors duration-1000">

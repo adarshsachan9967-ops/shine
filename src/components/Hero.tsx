@@ -5,9 +5,10 @@ import { motion } from "framer-motion";
 import { ArrowDown, Sparkles } from "lucide-react";
 import HeroHeart3D from "./3d/HeroHeart3D";
 import HangingPhotos from "./HangingPhotos";
-import { SITE_CONFIG } from "@/data/config";
+import { useSiteConfig } from "@/context/ConfigContext";
 
 export default function Hero() {
+  const SITE_CONFIG = useSiteConfig();
   const scrollToNext = () => {
     const el = document.getElementById("message");
     if (el) {

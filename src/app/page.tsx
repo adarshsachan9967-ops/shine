@@ -28,6 +28,8 @@ import MemoryTimer from "@/components/MemoryTimer";
 import FinalSurprise from "@/components/FinalSurprise";
 import Footer from "@/components/Footer";
 import { sounds } from "@/utils/sound";
+import { SITE_CONFIG } from "@/data/config";
+import { ConfigProvider } from "@/context/ConfigContext";
 
 import confetti from "canvas-confetti";
 
@@ -52,7 +54,8 @@ export default function Home() {
   };
 
   return (
-    <main className="relative min-h-screen bg-[#FFFDFB] text-[#2A121A] selection:bg-[#FFB3C1] selection:text-[#3D0C1A]">
+    <ConfigProvider config={SITE_CONFIG}>
+      <main className="relative min-h-screen bg-[#FFFDFB] text-[#2A121A] selection:bg-[#FFB3C1] selection:text-[#3D0C1A]">
       {/* 1. Cinematic Loading Intro */}
       <LoadingScreen />
 
@@ -139,5 +142,6 @@ export default function Home() {
       {/* 23. Minimal Romantic Footer with 5-Click Secret Message */}
       <Footer />
     </main>
+    </ConfigProvider>
   );
 }
